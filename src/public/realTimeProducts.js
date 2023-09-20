@@ -14,10 +14,7 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
     const priceInput = document.getElementById('productPrice');
     const price = priceInput.value;
     priceInput.value = '';
-
-
-    socket.emit('productList', {title:title, description:description, price:price});
-    
+    socket.emit('productList', {title:title, description:description, price:price});    
 });
 
 socket.on('product', (data) => {
@@ -27,4 +24,3 @@ socket.on('product', (data) => {
     productElement.style.marginTop = '10px';
     showProducts.appendChild(productElement);
 });
-
