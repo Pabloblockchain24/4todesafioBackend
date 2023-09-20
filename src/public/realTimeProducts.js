@@ -1,5 +1,6 @@
 
 const socket = io();
+
 document.getElementById('product-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const titleInput = document.getElementById('productTitle');
@@ -14,9 +15,9 @@ document.getElementById('product-form').addEventListener('submit', (e) => {
     const price = priceInput.value;
     priceInput.value = '';
 
+
     socket.emit('productList', {title:title, description:description, price:price});
-
-
+    
 });
 
 socket.on('product', (data) => {
@@ -24,7 +25,6 @@ socket.on('product', (data) => {
     const productElement = document.createElement('div');
     productElement.innerHTML = ` <strong>${data.title} </strong> ${data.description}  ${data.price}`;
     productElement.style.marginTop = '10px';
-
     showProducts.appendChild(productElement);
 });
 
